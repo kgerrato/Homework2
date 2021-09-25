@@ -1,0 +1,80 @@
+package com.example.homework2;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.graphics.Color;
+import android.os.Bundle;
+import android.widget.Button;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.TextView;
+
+public class MainActivity extends AppCompatActivity {
+
+    TextView mTextView1, mTextView2, mTextView3, mTextView4, mTextView5, mTextView6;
+    EditText mEditText1, mEditText2, mEditText3, mEditText4, mEditText5;
+    Button mButton1, mButton2;
+
+    @Override
+
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        mTextView1 = (TextView) findViewById(R.id.g1);
+        mTextView2 = (TextView) findViewById(R.id.g2);
+        mTextView3 = (TextView) findViewById(R.id.g3);
+        mTextView4 = (TextView) findViewById(R.id.g4);
+        mTextView5 = (TextView) findViewById(R.id.g5);
+
+        mTextView6 = (TextView) findViewById(R.id.gpa);
+
+
+        mEditText1 = (EditText) findViewById(R.id.e1);
+        mEditText2 = (EditText) findViewById(R.id.e2);
+        mEditText3 = (EditText) findViewById(R.id.e3);
+        mEditText4 = (EditText) findViewById(R.id.e4);
+        mEditText5 = (EditText) findViewById(R.id.e5);
+
+        mButton1 = (Button) findViewById(R.id.b1);
+
+    }
+
+    public void calculateGPA(View v) {
+        if (mEditText1.getText().toString().isEmpty() ||
+                mEditText2.getText().toString().isEmpty() ||
+                mEditText3.getText().toString().isEmpty() ||
+                mEditText4.getText().toString().isEmpty() ||
+                mEditText5.getText().toString().isEmpty()) {
+            mTextView6.setText("Please enter in a grade in all fields");
+        }
+        else {
+            float g1, g2, g3, g4, g5;
+            g1 = Float.parseFloat(mEditText1.getText().toString());
+            g2 = Float.parseFloat(mEditText2.getText().toString());
+            g3 = Float.parseFloat(mEditText3.getText().toString());
+            g4 = Float.parseFloat(mEditText4.getText().toString());
+            g5 = Float.parseFloat(mEditText5.getText().toString());
+
+            float avg = g1 + g2 + g3 + g4 + g5;
+            avg = avg / 5;
+
+            mButton1.setText("Clear Form");
+
+
+            if (avg < 60) {
+                mTextView6.setText("" + avg);
+                ;
+                mTextView6.setBackgroundColor(Color.RED);
+            } else if (avg > 60 && avg < 80) {
+                mTextView6.setText("" + avg);
+                ;
+                mTextView6.setBackgroundColor(Color.YELLOW);
+            } else if (avg >= 80 && avg <= 100) {
+                mTextView6.setText("" + avg);
+                ;
+                mTextView6.setBackgroundColor(Color.GREEN);
+            }
+        }
+    }
+}
