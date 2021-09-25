@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    TextView mTextView1, mTextView2, mTextView3, mTextView4, mTextView5, mTextView6;
+    TextView mTextView1, mTextView2, mTextView3, mTextView4, mTextView5, mTextView6; //textview, edittext and button set up so we can use them later
     EditText mEditText1, mEditText2, mEditText3, mEditText4, mEditText5;
     Button mButton1, mButton2;
 
@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mTextView1 = (TextView) findViewById(R.id.g1);
+        mTextView1 = (TextView) findViewById(R.id.g1); //each one set up by their id from the xml
         mTextView2 = (TextView) findViewById(R.id.g2);
         mTextView3 = (TextView) findViewById(R.id.g3);
         mTextView4 = (TextView) findViewById(R.id.g4);
@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void calculateGPA(View v) {
+    public void calculateGPA(View v) { //used to calculate the gpa when you hit the calculate button, if fields are empty, tell the user to enter in the fields
         if (mEditText1.getText().toString().isEmpty() ||
                 mEditText2.getText().toString().isEmpty() ||
                 mEditText3.getText().toString().isEmpty() ||
@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
             mTextView6.setText("Please enter in a grade in all fields");
         }
         else {
-            float g1, g2, g3, g4, g5;
+            float g1, g2, g3, g4, g5; //all the variables for the grades to calculate the avg
             g1 = Float.parseFloat(mEditText1.getText().toString());
             g2 = Float.parseFloat(mEditText2.getText().toString());
             g3 = Float.parseFloat(mEditText3.getText().toString());
@@ -59,10 +59,10 @@ public class MainActivity extends AppCompatActivity {
             float avg = g1 + g2 + g3 + g4 + g5;
             avg = avg / 5;
 
-            mButton1.setText("Clear Form");
+            mButton1.setText("Clear Form"); //changes the text to clearform
 
 
-            if (avg < 60) {
+            if (avg < 60) { //if below 60, color red, ect.
                 mTextView6.setText("" + avg);
                 ;
                 mTextView6.setBackgroundColor(Color.RED);
